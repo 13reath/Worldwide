@@ -1,4 +1,6 @@
+import { useSearchParams } from "react-router-dom";
 import styles from "./City.module.css";
+import Flag from "react-world-flags";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -8,7 +10,16 @@ const formatDate = (date) =>
     weekday: "long",
   }).format(new Date(date));
 
+function emojiToCountryCode(emoji) {
+  return [...emoji]
+    .map((char) => String.fromCharCode(char.codePointAt(0) - 127397))
+    .join("");
+}
+
 function City() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const lat = searchParams.get("lat");
+  const lng = searchParams.get("lng");
   // TEMP DATA
   const currentCity = {
     cityName: "Lisbon",
@@ -24,7 +35,13 @@ function City() {
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>{emoji}</span> {cityName}
+          <span>
+            <Flag
+              code={emojiToCountryCode(emoji)}
+              style={{ width: "30px", height: "30px" }}
+            />
+          </span>
+          {cityName}
         </h3>
       </div>
 
@@ -51,9 +68,7 @@ function City() {
         </a>
       </div>
 
-      <div>
-        <ButtonBack />
-      </div>
+      <div>{/* <ButtonBack /> */}</div>
     </div>
   );
 }
