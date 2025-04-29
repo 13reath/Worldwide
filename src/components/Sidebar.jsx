@@ -12,8 +12,6 @@ function Sidebar() {
 
       <Outlet />
 
-      <p>List of cities</p>
-
       <Footer />
     </div>
   );
