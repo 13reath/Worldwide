@@ -1,14 +1,9 @@
 import Flag from "react-world-flags";
 
-function CountryFlag({ countryCode }) {
+function CountryFlag({ countryCode, width = 30, height = 30 }) {
   if (!countryCode || countryCode.length !== 2) return null;
 
-  return (
-    <Flag
-      code={countryCode.toUpperCase()}
-      style={{ width: "30px", height: "30px" }}
-    />
-  );
+  return <Flag code={countryCode.toUpperCase()} style={{ width, height }} />;
 }
 
 export default CountryFlag;
