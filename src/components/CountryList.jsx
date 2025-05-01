@@ -2,8 +2,8 @@ import CountryItem from "./CountryItem";
 import styles from "./CountryList.module.css";
 import Spinner from "./Spinner";
 import Message from "./Message";
-import Flag from "react-world-flags";
 import { useCities } from "../contexts/CitiesContext";
+import CountryFlag from "./CountryFlag";
 
 function CountryList() {
   const { cities, isLoading } = useCities();
@@ -19,12 +19,7 @@ function CountryList() {
         ...arr,
         {
           country: city.country,
-          emoji: (
-            <Flag
-              code={city.country}
-              style={{ width: "30px", height: "30px" }}
-            />
-          ),
+          emoji: <CountryFlag countryCode={city.country} />,
         },
       ];
     else return arr;

@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
-import Flag from "react-world-flags";
+
 import { useCities } from "../contexts/CitiesContext";
 import { useEffect } from "react";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
+import CountryFlag from "./CountryFlag";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -36,7 +37,7 @@ function City() {
         <h3>
           {country && (
             <span>
-              <Flag code={country} style={{ width: "30px", height: "30px" }} />
+              <CountryFlag countryCode={country} />
             </span>
           )}
           {cityName ?? "Loading..."}
