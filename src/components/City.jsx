@@ -1,6 +1,10 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import Flag from "react-world-flags";
+import Button from "./Button";
+import { useCities } from "../contexts/CitiesContext";
+import { useEffect } from "react";
+import Spinner from "./Spinner";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -10,45 +14,42 @@ const formatDate = (date) =>
     weekday: "long",
   }).format(new Date(date));
 
-function emojiToCountryCode(emoji) {
-  return [...emoji]
-    .map((char) => String.fromCharCode(char.codePointAt(0) - 127397))
-    .join("");
-}
-
 function City() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
-  // TEMP DATA
-  const currentCity = {
-    cityName: "Lisbon",
-    emoji: "🇵🇹",
-    date: "2027-10-31T15:59:59.138Z",
-    notes: "My favorite city so far!",
-  };
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { getCity, currentCity, isLoading } = useCities();
 
-  const { cityName, emoji, date, notes } = currentCity;
+  useEffect(
+    function () {
+      getCity(id);
+    },
+    [id]
+  );
+
+  const { cityName, country, date, notes } = currentCity ?? {};
+
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.city}>
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>
-            <Flag
-              code={emojiToCountryCode(emoji)}
-              style={{ width: "30px", height: "30px" }}
-            />
-          </span>
-          {cityName}
+          {country && (
+            <span>
+              <Flag code={country} style={{ width: "30px", height: "30px" }} />
+            </span>
+          )}
+          {cityName ?? "Loading..."}
         </h3>
       </div>
 
-      <div className={styles.row}>
-        <h6>You went to {cityName} on</h6>
-        <p>{formatDate(date || null)}</p>
-      </div>
+      {date && (
+        <div className={styles.row}>
+          <h6>You went to {cityName} on</h6>
+          <p>{formatDate(date)}</p>
+        </div>
+      )}
 
       {notes && (
         <div className={styles.row}>
@@ -57,18 +58,30 @@ function City() {
         </div>
       )}
 
-      <div className={styles.row}>
-        <h6>Learn more</h6>
-        <a
-          href={`https://en.wikipedia.org/wiki/${cityName}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Check out {cityName} on Wikipedia &rarr;
-        </a>
-      </div>
+      {cityName && (
+        <div className={styles.row}>
+          <h6>Learn more</h6>
+          <a
+            href={`https://en.wikipedia.org/wiki/${cityName}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Check out {cityName} on Wikipedia &rarr;
+          </a>
+        </div>
+      )}
 
-      <div>{/* <ButtonBack /> */}</div>
+      <div>
+        <Button
+          type="back"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate(-1);
+          }}
+        >
+          &larr; Back
+        </Button>
+      </div>
     </div>
   );
 }
