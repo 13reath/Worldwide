@@ -1,10 +1,10 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import Flag from "react-world-flags";
-import Button from "./Button";
 import { useCities } from "../contexts/CitiesContext";
 import { useEffect } from "react";
 import Spinner from "./Spinner";
+import BackButton from "./BackButton";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -15,7 +15,6 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  const navigate = useNavigate();
   const { id } = useParams();
   const { getCity, currentCity, isLoading } = useCities();
 
@@ -72,15 +71,7 @@ function City() {
       )}
 
       <div>
-        <Button
-          type="back"
-          onClick={(e) => {
-            e.preventDefault();
-            navigate(-1);
-          }}
-        >
-          &larr; Back
-        </Button>
+        <BackButton />
       </div>
     </div>
   );
