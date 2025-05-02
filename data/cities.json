@@ -32,6 +32,72 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Olvega",
+      "country": "ES",
+      "date": "2025-05-02T09:15:13.718Z",
+      "notes": "",
+      "position": {
+        "lat": "41.78769700539063",
+        "lng": "-1.9555664062500002"
+      },
+      "id": 98443200
+    },
+    {
+      "cityName": "Paulilatino",
+      "country": "IT",
+      "date": "2025-05-02T09:16:38.717Z",
+      "notes": "asd",
+      "position": {
+        "lat": "40.12849105685408",
+        "lng": "8.745117187500002"
+      },
+      "id": 98443201
+    },
+    {
+      "cityName": "Morenilla",
+      "country": "ES",
+      "date": "2025-05-02T09:16:53.780Z",
+      "notes": "",
+      "position": {
+        "lat": "40.79717741518769",
+        "lng": "-1.7358398437500002"
+      },
+      "id": 98443202
+    },
+    {
+      "cityName": "La Fuente de San Esteban",
+      "country": "ES",
+      "date": "2025-05-02T09:19:56.637Z",
+      "notes": "",
+      "position": {
+        "lat": "40.84706035607122",
+        "lng": "-6.064453125000001"
+      },
+      "id": 98443203
+    },
+    {
+      "cityName": "La Fuente de San Esteban",
+      "country": "ES",
+      "date": "2025-05-02T09:19:56.637Z",
+      "notes": "",
+      "position": {
+        "lat": "40.84706035607122",
+        "lng": "-6.064453125000001"
+      },
+      "id": 98443204
+    },
+    {
+      "cityName": "Poza de la Vega",
+      "country": "ES",
+      "date": "2025-05-02T09:23:10.134Z",
+      "notes": "asd",
+      "position": {
+        "lat": "42.58544425738491",
+        "lng": "-4.7900390625"
+      },
+      "id": 98443205
     }
   ]
 }
