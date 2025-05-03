@@ -8,11 +8,11 @@ Check out the live app: [WorldWise](https://13reath.github.io/WorldWise/)
 
 ### Main Page
 
-![Main Page](main-page.png)
+![Main Page](./public/main-page.png)
 
 ### App Page
 
-![App Page](app-page.png)
+![App Page](./public/app-page.png)
 
 ## Technologies Used
 
