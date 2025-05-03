@@ -18,9 +18,9 @@ function App() {
   return (
     <AuthProvider>
       <CitiesProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
           <Routes>
-            <Route index element={<Homepage />} />x
+            <Route index element={<Homepage />} />
             <Route path="product" element={<Product />} />
             <Route path="pricing" element={<Pricing />} />
             <Route path="login" element={<Login />} />
